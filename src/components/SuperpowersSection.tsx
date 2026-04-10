@@ -1,52 +1,76 @@
-import { motion } from "framer-motion";
-import { BarChart2, Activity, Search, Briefcase } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { BarChart3, TrendingUp, Lightbulb, Zap } from "lucide-react";
 
-/* === SUPERPOWERS SECTION (v2.0) === */
+/* === SUPERPOWERS SECTION (v2.3) === */
 const SUPERPOWERS = [
-  { icon: BarChart2, label: "Deep Analytical Thinking" },
-  { icon: Activity, label: "Metrics-Driven Approach" },
-  { icon: Search, label: "UX Research" },
-  { icon: Briefcase, label: "Strategic Business Context" },
+  { 
+    icon: BarChart3, 
+    label: "Deep Analytical Thinking",
+    color: "hsl(var(--foreground))" 
+  },
+  { 
+    icon: TrendingUp, 
+    label: "Metrics-Driven Approach",
+    color: "hsl(var(--foreground))" 
+  },
+  { 
+    icon: Lightbulb, 
+    label: "Why-First Thinking",
+    color: "hsl(var(--foreground))" 
+  },
+  { 
+    icon: Zap, 
+    label: "Proactive Ownership",
+    color: "hsl(var(--foreground))" 
+  },
 ];
 
 const SuperpowersSection = () => {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-      className="section-padding container-main"
-    >
-      <h2 className="heading-section text-center mb-14">
-        My superpowers as a designer
-      </h2>
+  const [index, setIndex] = useState(0);
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-[700px] mx-auto">
-        {SUPERPOWERS.map(({ icon: Icon, label }, i) => (
-          <motion.div
-            key={label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.08 }}
-            className="flex items-center gap-3.5 p-6 rounded-2xl ink-border bg-card transition-shadow duration-200 hover:shadow-[0_4px_16px_rgba(27,42,107,0.08)]"
-          >
-            <Icon
-              size={28}
-              className="shrink-0"
-              style={{ color: 'hsl(227, 60%, 26%)' }}
-              strokeWidth={1.6}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <span className="text-[15px] md:text-[16px] font-semibold text-foreground">
-              {label}
-            </span>
-          </motion.div>
-        ))}
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % SUPERPOWERS.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const current = SUPERPOWERS[index];
+  const Icon = current.icon;
+
+  return (
+    <section className="relative overflow-hidden py-20 md:py-[140px]">
+
+      <div className="container-main relative z-10 text-center">
+        <h1 className="text-[26px] sm:text-[32px] md:text-[42px] lg:text-[54px] font-bold tracking-[-0.025em] text-[#1B2A6B] mb-8 md:mb-12">
+          My superpowers as a designer
+        </h1>
+
+        <div className="flex flex-col items-center justify-center min-h-[80px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="flex items-center gap-4 md:gap-5"
+            >
+              <Icon
+                size={32}
+                className="md:w-10 md:h-10 lg:w-11 lg:h-11 shrink-0"
+                style={{ color: 'hsl(var(--foreground))' }}
+                strokeWidth={1.8}
+              />
+              <span className="text-[18px] sm:text-[22px] md:text-[32px] lg:text-[42px] font-medium text-foreground tracking-tight">
+                {current.label}
+              </span>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

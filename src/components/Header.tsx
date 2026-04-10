@@ -13,18 +13,16 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const linkClass =
-    "relative text-[15px] font-normal text-foreground after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground after:transition-all after:duration-200 hover:after:w-full";
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 border-b border-[#E5E7EB] ${
         scrolled
-          ? "bg-background/[0.92] py-4 backdrop-blur-md shadow-[var(--shadow-nav)]"
-          : "bg-transparent py-6 md:py-8"
+          ? "bg-white/[0.98] py-3 md:py-4 backdrop-blur-md shadow-sm"
+          : "bg-white py-3 md:py-4"
       }`}
     >
-      <nav className="container-main flex items-center justify-between" aria-label="Main navigation">
+      <nav className="container-wide flex items-center justify-between" aria-label="Main navigation">
         <a href="/" aria-label="Home">
           <Logo />
         </a>
@@ -35,15 +33,15 @@ const Header = () => {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className={linkClass}
+            className="btn-tertiary"
           >
             Resume
           </a>
           <a
-            href="https://linkedin.com/in/placeholder"
+            href="https://www.linkedin.com/in/maria-pohranychna-uiuxdesigner?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
             target="_blank"
             rel="noopener noreferrer"
-            className={linkClass}
+            className="btn-tertiary"
           >
             LinkedIn
           </a>
@@ -63,22 +61,22 @@ const Header = () => {
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-foreground/[0.08] animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="container-main flex flex-col gap-4 py-6">
+        <div className="absolute top-full left-0 w-full md:hidden bg-white/95 backdrop-blur-md shadow-sm border-b border-[#E5E7EB] animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="container-main flex flex-col gap-3 py-4">
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[15px] font-normal text-foreground py-2"
+              className="btn-tertiary py-2"
               onClick={() => setMenuOpen(false)}
             >
               Resume
             </a>
             <a
-              href="https://linkedin.com/in/placeholder"
+              href="https://www.linkedin.com/in/maria-pohranychna-uiuxdesigner?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[15px] font-normal text-foreground py-2"
+              className="btn-tertiary py-2"
               onClick={() => setMenuOpen(false)}
             >
               LinkedIn
