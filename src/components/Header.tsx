@@ -30,7 +30,7 @@ const Header = () => {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           <a
-            href="/resume.pdf"
+            href="/resume"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-tertiary"
@@ -64,7 +64,7 @@ const Header = () => {
         <div className="absolute top-full left-0 w-full md:hidden bg-white/95 backdrop-blur-md shadow-sm border-b border-[#E5E7EB] animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="container-main flex flex-col gap-3 py-4">
             <a
-              href="/resume.pdf"
+              href="/resume"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-tertiary py-2"
