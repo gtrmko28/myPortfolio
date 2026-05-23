@@ -34,24 +34,6 @@ const ProjectsSection = () => {
       </p>
 
       <div className="flex flex-col gap-12 md:gap-12">
-        {/* New Project (Duplicate of Breazen) */}
-        <ProjectCard
-          active
-          showMetrics={false}
-          isNDA={true}
-          cardType="NDA"
-          company="SNAPVAULT"
-          title="Designed From Scratch: Making Thousands of Screenshots Findable"
-          description="Users had thousands of screenshots with no way to find them. I joined a startup at zero and shaped the entire product: defined functionality around OCR-based auto-tagging, manual tagging, rule-based albums, and tag search, validated hypotheses through moderated user testing, and delivered complete wireframes ready for handoff."
-          tags={["MOB. APP IOS", "PRODUCT THINKING", "OCR & SEARCH UX", "INFORMATION ARCHITECTURE", "HYPOTHESIS TESTING"]}
-          metrics={[
-            { value: "Thousands", label: "Screenshots" },
-            { value: "OCR", label: "Auto-Tagging" }
-          ]}
-          href="/work/snapvault"
-          imageSrc="/images/snapvault_final.png"
-        />
-
         {/* Card 1: Active — Breazen */}
         <ProjectCard
           active
@@ -67,6 +49,24 @@ const ProjectsSection = () => {
           ]}
           href="/work/breazen"
           imageSrc="/images/breazen_new.png"
+        />
+
+        {/* Snapvault: NDA case */}
+        <ProjectCard
+          active
+          showMetrics={false}
+          isNDA={true}
+          cardType="NDA"
+          company="SNAPVAULT"
+          title="Designed From Scratch: Making Thousands of Screenshots Findable"
+          description="Users had thousands of screenshots with no way to find them. I joined a startup at zero and shaped the entire product: defined functionality around OCR-based auto-tagging, manual tagging, rule-based albums, and tag search, validated hypotheses through moderated user testing, and delivered complete wireframes ready for handoff."
+          tags={["MOB. APP IOS", "PRODUCT THINKING", "OCR & SEARCH UX", "INFORMATION ARCHITECTURE", "HYPOTHESIS TESTING"]}
+          metrics={[
+            { value: "Thousands", label: "Screenshots" },
+            { value: "OCR", label: "Auto-Tagging" }
+          ]}
+          href="/work/snapvault"
+          imageSrc="/images/snapvault_final.png"
         />
 
       </div>
